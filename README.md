@@ -92,6 +92,23 @@ On Windows use `make.bat html`.
 `docs/source/conf.py` needs no environment variables and no configuration switching —
 there is exactly one language on this branch.
 
+### Verify in a clean clone before you push
+
+A local build can pass while Read the Docs fails, and the usual cause is the submodule.
+If `docs/source/_shared` was populated with a **sparse checkout** — for example because
+the full clone kept timing out — files that a real clone has simply do not exist on your
+disk, so Sphinx never sees them. `_shared/component` alone holds 55 pages this kit does
+not use; they are excluded by directory in `conf.py` precisely because of this.
+
+Once, before pushing a change that touches `conf.py` or `_shared`:
+
+```bash
+git clone --recurse-submodules <repo-url> /tmp/verify
+cd /tmp/verify/docs && make html
+```
+
+It is the only check that reproduces the Read the Docs environment.
+
 > **The submodule is not optional.** Without `docs/source/_shared` populated, the
 > `install_os` page is empty, `appendix` has no pages, and `set_up_pi.rst` loses its two
 > screenshots — the build fails on the missing includes.

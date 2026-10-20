@@ -1,0 +1,9 @@
+Exclude the whole shared component directory
+
+A clean clone builds with 55 warnings under -W, because sf-shared ships
+_shared/component/ with 55 pages this kit never references, and exclude_patterns
+only listed individual files from pi_start/ and appendix/.
+
+The local checkout did not show this: its submodule was a sparse checkout holding
+only pi_start/ and appendix/, so Sphinx never saw the component tree. Excluding by
+directory fixes it, and the README now says to verify in a clean clone.

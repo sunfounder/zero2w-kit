@@ -45,13 +45,18 @@ exclude_patterns = [
     "_build",
     "Thumbs.db",
     ".DS_Store",
-    # Pages from the shared repository (sf-shared) that this kit does not use.
+    # --- Pages from the shared repository (sf-shared) that this kit does not use ---
     # The submodule brings in the whole shared tree; everything this kit needs is
-    # listed in a toctree, and the rest would only produce "not included in any
+    # listed in a toctree, and anything else would only produce "not included in any
     # toctree" warnings and copy unused images into the build.
     #
-    # The shared pages we *do* use are deliberately NOT listed here: Sphinx has to
-    # know about a file to resolve it from a toctree.
+    # NOTE: these must be excluded by DIRECTORY where possible. A local sparse
+    # checkout can hide files that a real clone has, which is exactly how a build
+    # can pass locally and fail on Read the Docs. _shared/component holds 55 pages
+    # this kit never references.
+    "_shared/component",
+    # The shared pages we *do* use are deliberately NOT listed: Sphinx has to know
+    # about a file to resolve it from a toctree.
     #
     # set_up_pi.rst is listed because this kit keeps its own version at
     # docs/source/set_up_pi.rst: if the shared copy were still read as a document
