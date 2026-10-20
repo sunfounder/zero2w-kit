@@ -1,0 +1,24 @@
+.DS_Store
+Thumbs.db
+
+# Sphinx build output
+build/
+source/_build/
+doctrees/
+
+# NOTE: docs/source/_shared is a git submodule (sunfounder/sf-shared). Never
+# add it to .gitignore — Read the Docs and CI populate it via `submodules`.
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# Editors
+.vscode/
+.idea/
+*.swp

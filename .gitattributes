@@ -1,0 +1,14 @@
+# Normalise line endings: the docs are built on Linux (Read the Docs, GitHub
+# Actions), so text files are stored with LF. Only the Windows batch file keeps
+# CRLF.
+* text=auto eol=lf
+*.bat text eol=crlf
+
+# Images and other binaries must not be touched by the line-ending rules.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary

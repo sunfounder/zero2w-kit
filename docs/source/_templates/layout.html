@@ -1,0 +1,22 @@
+{%- extends "!layout.html" %}
+
+{% block extrabody %}
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com">
+        <img class="logo-img" src="https://ezblock.cc/readDocFile/sunfounder_LOGO_160x@2x.png"/>
+      </a>
+    </li>
+  </ul>
+</nav>
+{% endblock %}
+
+{# The home page carries the product name as its own title, so do not repeat it. #}
+{%- block htmltitle %}
+  {%- if title|striptags|trim == project|trim %}
+  <title>{{ project|e }}</title>
+  {%- else %}
+  <title>{{ title|striptags|e }}{{ titlesuffix }}</title>
+  {%- endif %}
+{%- endblock -%}
